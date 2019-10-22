@@ -7862,6 +7862,7 @@ async function run() {
     const tag = tagName.replace('refs/tags/', '');
     const releaseName = core.getInput('release_name', { required: true }).replace('refs/tags/', '');
     const body = core.getInput('body', { required: false })
+    const target = core.getInput('target', { requred: false })
     const draft = core.getInput('draft', { required: false }) === 'true';
     const prerelease = core.getInput('prerelease', { required: false }) === 'true';
 
@@ -7874,6 +7875,7 @@ async function run() {
       body,
       tag_name: tag,
       name: releaseName,
+      target_commitish: target,
       draft,
       prerelease
     });
